@@ -37,8 +37,11 @@ public class MainActivity extends AppCompatActivity {
         emessage2.setVisibility(View.GONE);
         Switch.setText("Advanced Encryption Standard");
     }
-
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void Encrypt(View view) throws Exception {
         KeyPair keyPair = null;
         if (emessage.length() == 0) {
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         message = String.valueOf(emessage.getText());
         key = String.valueOf(ekey.getText());
-        if (Switch.getText().toString() == "Advanced Encryption Standard") {
+        if (Switch.equals("Advanced Encryption Standard")) {
             {
                 AdvancedEncryptionStandard aes = new AdvancedEncryptionStandard();
                 String encData = aes.AESencrypt(key.getBytes("UTF-16LE"), message.getBytes("UTF-16LE"));
@@ -56,19 +59,20 @@ public class MainActivity extends AppCompatActivity {
                 answer.setText(encData);
             }
 
-        }  if (Switch.getText().toString() == "Caesar Cipher") {
-            if (Integer.parseInt(key) > 26) {
-                Toast.makeText(this, "The Key must be 26 or under", Toast.LENGTH_SHORT).show();
+        }  if (Switch.getText().equals("Caesar Cipher")) {
+
+            if (key.length() == 0) {
+                Toast.makeText(this, "Enter a key to Encrypt", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (ekey.length() == 0) {
-                Toast.makeText(this, "Enter a key to Encrypt", Toast.LENGTH_SHORT).show();
+            if (Integer.parseInt(key) > 26) {
+                Toast.makeText(this, "The Key must be 26 or under", Toast.LENGTH_SHORT).show();
                 return;
             }
             caesarcipher c = new caesarcipher();
             answer.setText(c.caesarcipherEnc(message, Integer.parseInt(key)));
 
-        }  if (Switch.getText().toString() == "Vigenere Cipher") {
+        }  if (Switch.getText().equals("Vigenere Cipher")) {
             if (ekey.length() == 0) {
                 Toast.makeText(this, "Enter a key to Encrypt", Toast.LENGTH_SHORT).show();
                 return;
@@ -92,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             Vigenere v = new Vigenere();
             answer.setText(v.Vigenereencrypt(message, key));
 
-        } else if (Switch.getText().toString() == "RSA") {
+        } else if (Switch.getText().equals("RSA")) {
             try {
                 keyPair = buildKeyPair();
                 PrivateKey privateKey = keyPair.getPrivate();
@@ -106,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-        else if (Switch.getText().toString() == "Play Fair") {
+        else if (Switch.getText().equals("Play Fair")) {
             try
             {
                 p=new PlayFair("");
@@ -129,47 +133,11 @@ public class MainActivity extends AppCompatActivity {
         return keyPairGenerator.genKeyPair();
     }
     private static PublicKey pubKey;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void Decrypt(View view) throws Exception
     {
@@ -180,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
         message = String.valueOf(emessage.getText());
         key = String.valueOf(ekey.getText());
-        if (Switch.getText().toString() == "Advanced Encryption Standard") {
+        if (Switch.getText().equals("Advanced Encryption Standard")) {
             AdvancedEncryptionStandard aes = new AdvancedEncryptionStandard();
             try {
                 String decData = aes.AESdecrypt(key, Base64.decode(message.getBytes("UTF-16LE"), Base64.DEFAULT));
@@ -190,27 +158,25 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if (Switch.getText().toString() == "Caesar Cipher") {
-            if (Integer.parseInt(key) >= 26) {
-                Toast.makeText(this, "The Key must be 26 or under", Toast.LENGTH_SHORT).show();
-                return;
-            }
+        if (Switch.getText().equals("Caesar Cipher")) {
+
             if (ekey.length() == 0) {
                 Toast.makeText(this, "Enter a key", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (Integer.parseInt(key) >= 26) {
+                Toast.makeText(this, "The Key must be 26 or under", Toast.LENGTH_SHORT).show();
                 return;
             }
             caesarcipher c = new caesarcipher();
             answer.setText(c.caesarcipherDec(message, Integer.parseInt(key)));
 
-        }  if (Switch.getText().toString() == "Vigenere Cipher") {
+        }  if (Switch.getText().equals("Vigenere Cipher")) {
             if (ekey.length() == 0) {
-                Toast.makeText(this, "Enter a key", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Enter a key to Decrypt", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (ekey.length() == 0) {
-                Toast.makeText(this, "Enter a key to Encrypt", Toast.LENGTH_SHORT).show();
-                return;
-            }
+
             for (int i = 0; i < message.length(); i++) {
                 for (int j = 0; j < NumbTest.length(); j++) {
                     if (message.charAt(i) == NumbTest.charAt(j)) {
@@ -231,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
             answer.setText(v.Vigeneredecrypt(message, key));
 
         }
-        if (Switch.getText().toString() == "RSA") {
+        if (Switch.getText().equals("RSA")) {
 try {
     byte[] restoredBytes = Base64.decode(message.getBytes(), 0);
     byte[] verified = decryptRSA(pubKey, restoredBytes);
@@ -243,7 +209,7 @@ try {
 
         }
     }
-         if (Switch.getText().toString() == "Play Fair") {
+         if (Switch.getText().equals("Play Fair")) {
 try {
     emessage2.setText(p.Decrypt(message,key));
     emat.setText(p.getT1());
@@ -256,29 +222,31 @@ try {
         }
 
         }
-
-
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void switchAlgho(View view)
     {
         RESET(view);
 
-        if (Switch.getText().toString() == "Advanced Encryption Standard") {
+        if (Switch.getText().equals("Advanced Encryption Standard")) {
             ekey.setInputType(InputType.TYPE_CLASS_NUMBER);
             Switch.setText("Caesar Cipher");
-        } else if (Switch.getText().toString() == "Caesar Cipher") {
+        } else if (Switch.getText().equals("Caesar Cipher")) {
             ekey.setInputType(InputType.TYPE_CLASS_TEXT);
             Switch.setText("Vigenere Cipher");
-        } else if (Switch.getText().toString() == "Vigenere Cipher") {
+        } else if (Switch.getText().equals( "Vigenere Cipher")) {
             Switch.setText("RSA");
             ekey.setVisibility(View.INVISIBLE);
-        } else if (Switch.getText().toString() == "RSA") {
+        } else if (Switch.getText().equals("RSA")) {
             ekey.setVisibility(View.VISIBLE);
             answer.setVisibility(View.GONE);
             emat.setVisibility(View.VISIBLE);
             emessage2.setVisibility(View.VISIBLE);
             Switch.setText("Play Fair");
-        } else if (Switch.getText().toString() == "Play Fair") {
+        } else if (Switch.getText().equals("Play Fair")) {
             answer.setVisibility(View.VISIBLE);
             emat.setVisibility(View.GONE);
             emessage2.setVisibility(View.GONE);
@@ -287,8 +255,11 @@ try {
             Switch.setText("Advanced Encryption Standard");
         }
     }
-
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void RESET(View view)
     {
         emessage.setText("");
@@ -298,7 +269,11 @@ try {
         emat.setText("");
         Toast.makeText(this, "All data has been deleted", Toast.LENGTH_SHORT).show();
     }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void copyToClipboard(View view)
     {
         if (emessage2.length() == 0) {
