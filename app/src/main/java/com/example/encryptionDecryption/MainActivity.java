@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         message = String.valueOf(emessage.getText());
         key = String.valueOf(ekey.getText());
-        if (Switch.equals("Advanced Encryption Standard")) {
+        if (Switch.getText().equals("Advanced Encryption Standard")) {
             {
                 AdvancedEncryptionStandard aes = new AdvancedEncryptionStandard();
                 String encData = aes.AESencrypt(key.getBytes("UTF-16LE"), message.getBytes("UTF-16LE"));
