@@ -78,36 +78,18 @@ private String t1="";
 
             }
         }
-
-int o=1;
-        int g=1;
-        int count=0;
+        t1=t1.concat("\n");
         for(int i=0;i < 5;i++)
         {
             for(int j=0;j < 5;j++)
-            {
-                count++;
-                if(g==1){
-                    t1+="   ";
-                    t1 = t1 + "\n";
-                    g=0;
-                    count=0;
-                }
+                t1 = t1 +"   "+ keyMatrix[i][j];
 
-                if(count==5) {
-                    t1 = t1 + "\n";
-                    count=0;
-                }
-                 if(o==1) {
-                     t1 = t1 + keyMatrix[i][j];
-                     o = 0;
-                 }
-                 else
-                     t1 = t1 +"   "+ keyMatrix[i][j];
+                 t1=t1.concat("\n");
+
             }
         }
 
-    }
+
 
     int rowPos(char c) {
         for (int i = 0; i < keyMatrix.length; i++) {

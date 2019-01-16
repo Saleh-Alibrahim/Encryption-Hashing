@@ -87,7 +87,7 @@
 
     <TextView
         android:id="@+id/EncDecmat"
-        android:layout_width="300dp"
+        android:layout_width="217dp"
         android:layout_height="111dp"
         android:layout_marginBottom="160dp"
         android:background="#FFFFFF"

@@ -221,7 +221,7 @@ try
  catch (Exception e)
  {
 
-                 Toast.makeText(this, "Numbers are not allowed here", Toast.LENGTH_SHORT).show();
+                 Toast.makeText(this, "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
  }
         }
 
