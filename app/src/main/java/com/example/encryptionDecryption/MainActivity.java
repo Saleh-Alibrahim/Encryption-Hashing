@@ -13,9 +13,9 @@ import static com.example.encryptionDecryption.RSA.decryptRSA;
 import static com.example.encryptionDecryption.RSA.encryptRSA;
 
 public class MainActivity extends AppCompatActivity {
-    String message;
-    String key;
-    private String NumbTest = "0123456789";
+    private String message;
+    private String key;
+
     private  PlayFair p;
     private   Button Switch ;
     private  TextView answer ;
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         emat.setVisibility(View.GONE);
         emessage2.setVisibility(View.GONE);
         Switch.setText("Advanced Encryption Standard");
+
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,14 +44,16 @@ public class MainActivity extends AppCompatActivity {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void Encrypt(View view) throws Exception {
-        KeyPair keyPair = null;
+
+        KeyPair keyPair =null;
+
         if (emessage.length() == 0) {
             Toast.makeText(this, "Enter a message to Encrypt", Toast.LENGTH_SHORT).show();
             return;
         }
-
         message = String.valueOf(emessage.getText());
         key = String.valueOf(ekey.getText());
+
         if (Switch.getText().equals("Advanced Encryption Standard")) {
             {
                 AdvancedEncryptionStandard aes = new AdvancedEncryptionStandard();
@@ -77,27 +80,29 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Enter a key to Encrypt", Toast.LENGTH_SHORT).show();
                 return;
             }
-            for (int i = 0; i < message.length(); i++) {
-                for (int j = 0; j < NumbTest.length(); j++) {
-                    if (message.charAt(i) == NumbTest.charAt(j)) {
-                        Toast.makeText(this, "Number is not Allowed here", Toast.LENGTH_SHORT).show();
+            for (char i  : message.toUpperCase().toCharArray())
+            {
+                    if (i<'A'|| i>'Z')
+                    {
+                        Toast.makeText(this, "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
-            }
-            for (int i = 0; i < key.length(); i++) {
-                for (int j = 0; j < NumbTest.length(); j++) {
-                    if (key.charAt(i) == NumbTest.charAt(j)) {
-                        Toast.makeText(this, "Number is not Allowed here", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+            for (char i  : key.toUpperCase().toCharArray())
+            {
+                if (i<'A'|| i>'Z')
+                {
+                    Toast.makeText(this, "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
+                    return;
                 }
             }
             Vigenere v = new Vigenere();
             answer.setText(v.Vigenereencrypt(message, key));
 
-        } else if (Switch.getText().equals("RSA")) {
+        }
+       else if (Switch.getText().equals("RSA")) {
             try {
+
                 keyPair = buildKeyPair();
                 PrivateKey privateKey = keyPair.getPrivate();
                 pubKey = keyPair.getPublic();
@@ -110,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-        else if (Switch.getText().equals("Play Fair")) {
+         if (Switch.getText().equals("Play Fair")) {
             try
             {
                 p=new PlayFair("");
@@ -119,10 +124,10 @@ public class MainActivity extends AppCompatActivity {
             }
             catch (Exception e)
             {
-                Toast.makeText(this, "Numbers are not allowed here", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
             }
         }
-        else if(Switch.getText().toString()=="$$$"){
+         if(Switch.getText().toString()=="$$$"){
 
         }
     }
@@ -177,28 +182,26 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            for (int i = 0; i < message.length(); i++) {
-                for (int j = 0; j < NumbTest.length(); j++) {
-                    if (message.charAt(i) == NumbTest.charAt(j)) {
-                        Toast.makeText(this, "Number is not Allowed here", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                }
+        for (char i  : message.toUpperCase().toCharArray()) {
+            if (i<'A'|| i>'Z') {
+                Toast.makeText(this, "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
+                return;
             }
-            for (int i = 0; i < key.length(); i++) {
-                for (int j = 0; j < NumbTest.length(); j++) {
-                    if (key.charAt(i) == NumbTest.charAt(j)) {
-                        Toast.makeText(this, "Number is not Allowed here", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                }
+            }
+        for (char i  : key.toUpperCase().toCharArray()) {
+            if (i<'A'|| i>'Z')
+            {
+                Toast.makeText(this, "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
+                return;
+            }
             }
             Vigenere v = new Vigenere();
             answer.setText(v.Vigeneredecrypt(message, key));
 
         }
         if (Switch.getText().equals("RSA")) {
-try {
+try
+{
     byte[] restoredBytes = Base64.decode(message.getBytes(), 0);
     byte[] verified = decryptRSA(pubKey, restoredBytes);
     answer.setText(new String(verified));
@@ -210,7 +213,8 @@ try {
         }
     }
          if (Switch.getText().equals("Play Fair")) {
-try {
+try
+{
     emessage2.setText(p.Decrypt(message,key));
     emat.setText(p.getT1());
 }

@@ -52,7 +52,7 @@
 
     <EditText
         android:id="@+id/Key"
-        android:layout_width="109dp"
+        android:layout_width="130dp"
         android:layout_height="50dp"
         android:layout_marginBottom="340dp"
         android:background="#FFFFFF"
