@@ -53,81 +53,79 @@ public class MainActivity extends AppCompatActivity {
         }
         message = String.valueOf(emessage.getText());
         key = String.valueOf(ekey.getText());
-
-        if (Switch.getText().equals("Advanced Encryption Standard")) {
-            {
+        String Algorithm=String.valueOf(Switch.getText());
+        switch(Algorithm) {
+            case "Advanced Encryption Standard": {
                 AdvancedEncryptionStandard aes = new AdvancedEncryptionStandard();
                 String encData = aes.AESencrypt(key.getBytes("UTF-16LE"), message.getBytes("UTF-16LE"));
-
                 answer.setText(encData);
+                break;
             }
+            case "Caesar Cipher": {
+                if (key.length() == 0) {
+                    Toast.makeText(this, "Enter a key to Encrypt", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (Integer.parseInt(key) > 26) {
+                    Toast.makeText(this, "The Key must be 26 or under", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                caesarcipher c = new caesarcipher();
+                answer.setText(c.caesarcipherEnc(message, Integer.parseInt(key)));
+                break;
 
-        }  if (Switch.getText().equals("Caesar Cipher")) {
-
-            if (key.length() == 0) {
-                Toast.makeText(this, "Enter a key to Encrypt", Toast.LENGTH_SHORT).show();
-                return;
             }
-            if (Integer.parseInt(key) > 26) {
-                Toast.makeText(this, "The Key must be 26 or under", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            caesarcipher c = new caesarcipher();
-            answer.setText(c.caesarcipherEnc(message, Integer.parseInt(key)));
-
-        }  if (Switch.getText().equals("Vigenere Cipher")) {
-            if (ekey.length() == 0) {
-                Toast.makeText(this, "Enter a key to Encrypt", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            for (char i  : message.toUpperCase().toCharArray())
-            {
-                    if (i<'A'|| i>'Z')
-                    {
+            case "Vigenere Cipher": {
+                if (ekey.length() == 0) {
+                    Toast.makeText(this, "Enter a key to Encrypt", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                for (char i : message.toUpperCase().toCharArray()) {
+                    if (i < 'A' || i > 'Z') {
                         Toast.makeText(this, "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
-            for (char i  : key.toUpperCase().toCharArray())
-            {
-                if (i<'A'|| i>'Z')
-                {
-                    Toast.makeText(this, "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
-                    return;
+                for (char i : key.toUpperCase().toCharArray()) {
+                    if (i < 'A' || i > 'Z') {
+                        Toast.makeText(this, "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                 }
-            }
-            Vigenere v = new Vigenere();
-            answer.setText(v.Vigenereencrypt(message, key));
 
-        }
-       else if (Switch.getText().equals("RSA")) {
-            try {
 
-                keyPair = buildKeyPair();
-                PrivateKey privateKey = keyPair.getPrivate();
-                pubKey = keyPair.getPublic();
-                byte[] signed = encryptRSA(privateKey, message);
-                String stringToStore = new String(Base64.encode(signed, 0));
-                answer.setText(stringToStore);
-            }
-            catch (Exception e) {
-                Toast.makeText(this, "Your message is to long", Toast.LENGTH_SHORT).show();
+                Vigenere v = new Vigenere();
+                answer.setText(v.Vigenereencrypt(message, key));
+                break;
             }
 
-        }
-         if (Switch.getText().equals("Play Fair")) {
-            try
-            {
-                p=new PlayFair("");
-                emessage2.setText(p.Encrypt(message,key));
-                emat.setText(p.getT1());
+
+            case "RSA": {
+                try {
+
+                    keyPair = buildKeyPair();
+                    PrivateKey privateKey = keyPair.getPrivate();
+                    pubKey = keyPair.getPublic();
+                    byte[] signed = encryptRSA(privateKey, message);
+                    String stringToStore = new String(Base64.encode(signed, 0));
+                    answer.setText(stringToStore);
+
+                } catch (Exception e) {
+                    Toast.makeText(this, "Your message is to long", Toast.LENGTH_SHORT).show();
+
+                }
+                break;
             }
-            catch (Exception e)
-            {
-                Toast.makeText(this, "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
+            case "Play Fair": {
+                try {
+                    p = new PlayFair("");
+                    emessage2.setText(p.Encrypt(message, key));
+                    emat.setText(p.getT1());
+                } catch (Exception e) {
+                    Toast.makeText(this, "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
+                }
+                break;
             }
-        }
-         if(Switch.getText().toString()=="$$$"){
 
         }
     }
@@ -242,14 +240,17 @@ try
             ekey.setInputType(InputType.TYPE_CLASS_TEXT);
             Switch.setText("Vigenere Cipher");
         } else if (Switch.getText().equals( "Vigenere Cipher")) {
-            Switch.setText("RSA");
-            ekey.setVisibility(View.INVISIBLE);
-        } else if (Switch.getText().equals("RSA")) {
             ekey.setVisibility(View.VISIBLE);
             answer.setVisibility(View.GONE);
             emat.setVisibility(View.VISIBLE);
             emessage2.setVisibility(View.VISIBLE);
             Switch.setText("Play Fair");
+//        } else if (Switch.getText().equals("RSA")) {
+//            ekey.setVisibility(View.VISIBLE);
+//            answer.setVisibility(View.GONE);
+//            emat.setVisibility(View.VISIBLE);
+//            emessage2.setVisibility(View.VISIBLE);
+//            Switch.setText("Play Fair");
         } else if (Switch.getText().equals("Play Fair")) {
             answer.setVisibility(View.VISIBLE);
             emat.setVisibility(View.GONE);
