@@ -1,6 +1,7 @@
 package com.example.encryptionDecryption;
 
 import android.util.Base64;
+import android.util.Log;
 
 import java.security.MessageDigest;
 
@@ -17,6 +18,7 @@ public class AdvancedEncryptionStandard {
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS7Padding");
         cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
         byte[] encrypted = cipher.doFinal(clear);
+        Log.i("qwewqewqewqewq",String.valueOf(Base64.DEFAULT));
         return Base64.encodeToString(encrypted, Base64.DEFAULT);
     }
     public String AESdecrypt (String key,byte[] encrypted) throws Exception {
