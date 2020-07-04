@@ -27,6 +27,7 @@
         android:onClick="switchAlgho"
         android:text="Advanced Encryption Standard"
         android:textColor="#000000"
+        android:background="@drawable/buttonshape"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -38,8 +39,9 @@
         android:id="@+id/TextArea"
         android:layout_width="300dp"
         android:layout_height="160dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="405dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/shape"
         android:gravity="center"
         android:hint="Enter your message here"
         android:inputType="textMultiLine"
@@ -48,15 +50,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Swtich" />
 
     <EditText
         android:id="@+id/Key"
         android:layout_width="130dp"
         android:layout_height="50dp"
         android:layout_marginBottom="340dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/shape"
         android:gravity="center"
         android:hint="key"
         android:maxLength="10"
@@ -75,7 +77,7 @@
         android:layout_width="300dp"
         android:layout_height="160dp"
         android:layout_marginBottom="100dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/shape"
         android:gravity="center"
         android:hint="Your output gonna be here"
         android:inputType="textMultiLine"
@@ -91,7 +93,7 @@
         android:layout_width="217dp"
         android:layout_height="111dp"
         android:layout_marginBottom="160dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/shape"
         android:visibility="gone"
         android:gravity="center"
         android:hint="Your Matrix Key gonna be here"
@@ -108,7 +110,7 @@
         android:layout_width="300dp"
         android:layout_height="56dp"
         android:layout_marginBottom="95dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/shape"
         android:gravity="center"
         android:hint="Your output gonna be here"
         android:inputType="textMultiLine"
@@ -127,6 +129,7 @@
         android:layout_height="60dp"
         android:layout_marginBottom="272dp"
         android:onClick="Encrypt"
+        android:background="@drawable/buttonshape"
         android:text="Encrypt"
         android:textSize="19dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -142,7 +145,7 @@
         android:layout_marginBottom="272dp"
         android:onClick="Decrypt"
         android:text="Decrypt"
-
+        android:background="@drawable/buttonshape"
         android:textSize="19dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,6 +159,7 @@
         android:layout_marginBottom="32dp"
         android:onClick="copyToClipboard"
         android:text="Copy"
+        android:background="@drawable/buttonshape"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -169,20 +173,12 @@
         android:layout_marginBottom="32dp"
         android:onClick="RESET"
         android:text="RESET"
+
+        android:background="@drawable/buttonshape"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Made By: Saleh Alibrahim"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.constraint.Guideline
@@ -197,7 +193,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_begin="21dp" />
 
     <android.support.constraint.Group
         android:id="@+id/group"
@@ -209,7 +205,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_begin="21dp" />
 
 
 </android.support.constraint.ConstraintLayout>
