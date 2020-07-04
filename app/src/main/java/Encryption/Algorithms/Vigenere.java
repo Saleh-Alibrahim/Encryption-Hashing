@@ -1,4 +1,4 @@
-package Algorithms;
+package Encryption.Algorithms;
 
 public class Vigenere {
     public String Vigenereencrypt (String text, String key)

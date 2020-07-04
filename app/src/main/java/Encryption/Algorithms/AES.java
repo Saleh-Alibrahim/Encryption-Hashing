@@ -1,4 +1,4 @@
-package Algorithms;
+package Encryption.Algorithms;
 
 import android.util.Base64;
 import android.util.Log;
@@ -8,7 +8,7 @@ import java.security.MessageDigest;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-public class AdvancedEncryptionStandard {
+public class AES {
     public String AESencrypt ( byte[] key, byte[] clear) throws Exception {
 
         MessageDigest md = MessageDigest.getInstance("md5");

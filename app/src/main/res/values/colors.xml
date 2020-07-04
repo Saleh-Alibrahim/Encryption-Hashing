@@ -5,7 +5,8 @@
     <color name="colorAccent">#000000</color>
 
     App Color
-    <color name="Gray">#DCDCDC</color>
+    <color name="Gray">#ececec</color>
+    <color name="White">#FFFFFF	</color>
     <color name="DarkGray">#808080</color>
     <color name="Red">#AF1B1B</color>
 </resources>

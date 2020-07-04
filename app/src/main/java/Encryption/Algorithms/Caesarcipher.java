@@ -1,6 +1,6 @@
-package Algorithms;
+package Encryption.Algorithms;
 
-public class caesarcipher {
+public class Caesarcipher {
     String message;
     char ch;
     char NumbTest[] = {'0','1', '2', '3', '4', '5', '6', '7', '8', '9'};

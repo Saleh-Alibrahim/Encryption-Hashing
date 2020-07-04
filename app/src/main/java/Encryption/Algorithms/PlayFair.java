@@ -1,4 +1,4 @@
-package Algorithms;
+package Encryption.Algorithms;
 
 public class PlayFair {
 
