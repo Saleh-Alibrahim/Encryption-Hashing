@@ -1,7 +1,7 @@
-package com.example.encryptionDecryption;
+package Algorithms;
 
 public class Vigenere {
-    String Vigenereencrypt (String text, String key)
+    public String Vigenereencrypt (String text, String key)
     {
 
         String res = "";
@@ -16,7 +16,7 @@ public class Vigenere {
         return res;
 
     }
-    String Vigeneredecrypt (String text, String key)
+    public String Vigeneredecrypt (String text, String key)
     {
         String res = "";
         text = text.toUpperCase();

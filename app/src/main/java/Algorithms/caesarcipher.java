@@ -1,4 +1,4 @@
-package com.example.encryptionDecryption;
+package Algorithms;
 
 public class caesarcipher {
     String message;

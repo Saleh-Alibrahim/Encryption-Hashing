@@ -1,6 +1,6 @@
-package com.example.encryptionDecryption;
+package Algorithms;
 
-class PlayFair {
+public class PlayFair {
 
 private String t1="";
 
@@ -14,7 +14,7 @@ private String t1="";
         this.t1 = t1;
     }
 
-    class Basic {
+    public class Basic {
         String allChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         boolean indexOfChar(char c) {
@@ -42,7 +42,7 @@ private String t1="";
         return false;
     }
 
-    void insertKey(String key) {
+    public void insertKey(String key) {
         key = key.toUpperCase();
         key = key.replaceAll("J", "I");
         key = key.replaceAll(" ", "");
@@ -111,7 +111,7 @@ private String t1="";
         return -1;
     }
 
-    String encryptChar(String plain) {
+    public String encryptChar(String plain) {
         plain = plain.toUpperCase();
         char a = plain.charAt(0), b = plain.charAt(1);
         String cipherChar = "";
@@ -150,7 +150,7 @@ private String t1="";
     }
 
 
-    String Encrypt(String plainText, String key) {
+    public String Encrypt(String plainText, String key) {
         insertKey(key);
         String cipherText = "";
         plainText = plainText.replaceAll("j", "i");
@@ -171,7 +171,7 @@ private String t1="";
     }
 
 
-    String decryptChar(String cipher) {
+    public String decryptChar(String cipher) {
         cipher = cipher.toUpperCase();
         char a = cipher.charAt(0), b = cipher.charAt(1);
         String plainChar = "";
@@ -210,7 +210,7 @@ private String t1="";
     }
 
 
-    String Decrypt(String cipherText, String key) {
+    public String Decrypt(String cipherText, String key) {
         String plainText = "";
         cipherText = cipherText.replaceAll("j", "i");
         cipherText = cipherText.replaceAll(" ", "");

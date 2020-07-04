@@ -1,4 +1,4 @@
-package com.example.encryptionDecryption;
+package Main;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,15 @@ import android.view.*;
 import android.widget.*;
 import android.util.*;
 import android.content.Context;
+
+import Algorithms.AdvancedEncryptionStandard;
+
+import com.example.Algorithms.R;
+
+import Algorithms.PlayFair;
+import Algorithms.Vigenere;
+import Algorithms.caesarcipher;
+
 import java.nio.charset.StandardCharsets;
 import java.security.*;
 
@@ -314,10 +323,7 @@ public class MainActivity extends AppCompatActivity {
             }
             Toast.makeText(this,
                     "Your message has be copied", Toast.LENGTH_SHORT).show();
-
-
         } else {
-
             int sdk = android.os.Build.VERSION.SDK_INT;
             if (sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
                 android.text.ClipboardManager clipboard = (android.text.ClipboardManager)

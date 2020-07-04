@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/ConstraintLayout"
     android:background="#FFFFFF"
-    tools:context=".MainActivity">
+    tools:context="Main.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"

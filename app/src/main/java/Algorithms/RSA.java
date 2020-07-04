@@ -1,4 +1,4 @@
-package com.example.encryptionDecryption;
+package Algorithms;
 
 import java.security.PrivateKey;
 import java.security.PublicKey;
