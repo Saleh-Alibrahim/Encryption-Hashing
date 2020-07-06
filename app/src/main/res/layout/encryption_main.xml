@@ -1,56 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/ConstraintLayout"
     android:background="#FFFFFF"
     tools:context="Main.">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/grjml"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/Swtich"
         android:layout_width="300dp"
         android:layout_height="90dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/buttonshape"
         android:onClick="encryptionButtonClick"
         android:text="@string/advanced_encryption_standard"
         android:textColor="#000000"
-        android:background="@drawable/buttonshape"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/Encrypt_Buuton"
+        android:layout_width="111dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="encryptionButtonClick"
+        android:text="@string/encrypt"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toStartOf="@+id/Decrypt_Buuton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Key" />
+
+    <Button
+        android:id="@+id/Decrypt_Buuton"
+        android:layout_width="111dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="encryptionButtonClick"
+        android:text="@string/decrypt"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Encrypt_Buuton"
+        app:layout_constraintTop_toBottomOf="@+id/Key" />
+
+
+                <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/grjml"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/copy_button"
+        android:layout_width="111dp"
+        android:layout_height="60dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="encryptionButtonClick"
+        android:text="@string/copy"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/Answer"
+        app:layout_constraintEnd_toStartOf="@+id/reset_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.375" />
+
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="111dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="92dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="encryptionButtonClick"
+        android:text="@string/reset"
+        android:textSize="20sp"
+        app:layout_="@+id/Answer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/copy_button" />
 
     <EditText
         android:id="@+id/TextArea"
         android:layout_width="300dp"
         android:layout_height="160dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="405dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/shape"
         android:gravity="center"
         android:hint="@string/enter_your_message_here"
         android:inputType="textMultiLine"
         android:textColor="#000000"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Swtich" />
 
@@ -58,7 +114,7 @@
         android:id="@+id/Key"
         android:layout_width="263dp"
         android:layout_height="66dp"
-        android:layout_marginBottom="340dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/shape"
         android:gravity="center"
         android:hint="@string/key"
@@ -66,28 +122,27 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
 
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextArea" />
 
     <TextView
         android:id="@+id/Answer"
         android:layout_width="300dp"
         android:layout_height="160dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/shape"
         android:gravity="center"
         android:hint="@string/your_output_gonna_be_here"
         android:inputType="textMultiLine"
         android:textColor="#000000"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Encrypt_Buuton"
         tools:ignore="TextViewEdits" />
 
     <TextView
@@ -118,74 +173,13 @@
         android:hint="@string/your_output_gonna_be_here"
         android:inputType="textMultiLine"
         android:textColor="#000000"
-        android:visibility="gone"
         android:textSize="15sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextViewEdits" />
-
-
-    <Button
-        android:id="@+id/Encrypt_Buuton"
-        android:layout_width="111dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="272dp"
-        android:onClick="encryptionButtonClick"
-        android:background="@drawable/buttonshape"
-        android:text="@string/encrypt"
-        android:textSize="19sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-    <Button
-        android:id="@+id/Decrypt_Buuton"
-        android:layout_width="111dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="272dp"
-        android:onClick="encryptionButtonClick"
-        android:text="@string/decrypt"
-        android:background="@drawable/buttonshape"
-        android:textSize="19sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/copy_button"
-        android:layout_width="111dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="32dp"
-        android:onClick="encryptionButtonClick"
-        android:text="@string/copy"
-        android:background="@drawable/buttonshape"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/reset_button"
-        android:layout_width="111dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="32dp"
-        android:onClick="encryptionButtonClick"
-        android:text="@string/reset"
-
-        android:background="@drawable/buttonshape"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
