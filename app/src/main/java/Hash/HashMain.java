@@ -16,6 +16,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.example.Algorithms.R;
+
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
@@ -54,16 +56,29 @@ public class HashMain extends Fragment {
 
 
         if (Textfield_Text.length() == 0) {
-            Toast.makeText(view.getContext(), "Enter a message to Encrypt", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "Enter a message to Hash", Toast.LENGTH_SHORT).show();
             return;
         }
         message = String.valueOf(Textfield_Text.getText());
-        salt = String.valueOf(Textfield_salt.getText());
-        round = Integer.parseInt(String.valueOf(Textfield_round.getText()));
+        //salt = String.valueOf(Textfield_salt.getText());
+        //round = Integer.parseInt(String.valueOf(Textfield_round.getText()));
         String Algorithm = String.valueOf(Switch.getText());
         switch (Algorithm) {
+            case "MD5":{
+                MessageDigest digest = MessageDigest.getInstance("MD5");
+                byte[] hash = digest.digest(message.getBytes(StandardCharsets.UTF_8));
+                String encoded = Base64.encodeToString(hash, 0);
+                Answer.setText(encoded);
+            }
+
             case "SHA-256": {
                 MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                byte[] hash = digest.digest(message.getBytes(StandardCharsets.UTF_8));
+                String encoded = Base64.encodeToString(hash, 0);
+                Answer.setText(encoded);
+            }
+            case "SHA-512": {
+                MessageDigest digest = MessageDigest.getInstance("SHA-512");
                 byte[] hash = digest.digest(message.getBytes(StandardCharsets.UTF_8));
                 String encoded = Base64.encodeToString(hash, 0);
                 Answer.setText(encoded);
@@ -83,8 +98,14 @@ public class HashMain extends Fragment {
         reset(null);
         String SwitchValue = Switch.getText().toString();
         switch (SwitchValue) {
+            case "MD5":
+                Switch.setText("SHA-256");
+                break;
             case "SHA-256":
-                Switch.setText("Advanced Encryption Standard");
+                Switch.setText("SHA-512");
+                break;
+            case "SHA-512":
+                Switch.setText("MD5");
                 break;
 
         }

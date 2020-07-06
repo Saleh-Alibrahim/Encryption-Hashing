@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Encryption</string>
+    <string name="app_name">Encryption Hash</string>
     <string name="decrypt">Decrypt</string>
     <string name="encrypt">Encrypt</string>
     <string name="copy">Copy</string>
