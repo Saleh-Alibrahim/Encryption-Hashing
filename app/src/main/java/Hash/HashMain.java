@@ -59,25 +59,20 @@ public class HashMain extends Fragment {
         message = String.valueOf(Textfield_Text.getText());
         salt = String.valueOf(Textfield_salt.getText());
         String Algorithm = String.valueOf(Switch.getText());
+        String answer="";
         switch (Algorithm) {
-            case "MD5":{
-                String answer=hashText("MD5",salt,message);
+            case "MD5":
+                answer=hashText("MD5",salt,message);
                 Answer.setText(answer);
                 break;
-            }
-
-            case "SHA-256": {
-                String answer=hashText("SHA-256",salt,message);
+            case "SHA-256":
+                answer=hashText("SHA-256",salt,message);
                 Answer.setText(answer);
                 break;
-            }
-            case "SHA-512": {
-                String answer=hashText("SHA-512",salt,message);
+            case "SHA-512":
+                answer=hashText("SHA-512",salt,message);
                 Answer.setText(answer);
                 break;
-            }
-
-
         }
     }
 
@@ -100,9 +95,7 @@ public class HashMain extends Fragment {
             case "SHA-512":
                 Switch.setText("MD5");
                 break;
-
         }
-
     }
 
 

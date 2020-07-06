@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
                     encryptionMain.switchAlgho(view);
                     break;
                 case R.id.Encrypt_Buuton:
-                    encryptionMain.Encrypt(view);
+                    encryptionMain.encrypt(view);
                     break;
                 case R.id.Decrypt_Buuton:
-                    encryptionMain.Decrypt(view);
+                    encryptionMain.decrypt(view);
                     break;
                 case R.id.copy_button:
                     encryptionMain.copyToClipboard(view);

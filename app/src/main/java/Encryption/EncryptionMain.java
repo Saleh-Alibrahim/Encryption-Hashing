@@ -70,7 +70,7 @@ public class EncryptionMain extends Fragment {
 
 
 
-    public void Encrypt(View view) throws Exception {
+    public void encrypt(View view) throws Exception {
 
 
         if (Textfield_Text.length() == 0) {
@@ -81,18 +81,17 @@ public class EncryptionMain extends Fragment {
         key = String.valueOf(Textfield_Key.getText());
         String Algorithm = String.valueOf(Switch.getText());
         switch (Algorithm) {
-            case "Advanced Encryption Standard": {
+            case "Advanced Encryption Standard":
                 AES aes = new AES();
-                String encData = aes.AESencrypt(key.getBytes("UTF-16LE"), message.getBytes("UTF-16LE"));
-                Answer.setText(encData);
+                String enc = aes.AESencrypt(key.getBytes("UTF-16LE"), message.getBytes("UTF-16LE"));
+                Answer.setText(enc);
                 break;
-            }
             case "Triple Data Encryption Standard":
                 DES des = new DES();
                 String encData = des.encrypt(key.getBytes("UTF-16LE"), message.getBytes("UTF-16LE"));
                 Answer.setText(encData);
                 break;
-            case "Caesar Cipher": {
+            case "Caesar Cipher":
                 if (key.isEmpty()) {
                     Toast.makeText(view.getContext(), "Enter a key to Encrypt", Toast.LENGTH_SHORT).show();
                     return;
@@ -104,9 +103,7 @@ public class EncryptionMain extends Fragment {
                 Caesarcipher c = new Caesarcipher();
                 Answer.setText(c.caesarcipherEnc(message, Integer.parseInt(key)));
                 break;
-
-            }
-            case "Vigenere Cipher": {
+            case "Vigenere Cipher":
                 if (Textfield_Key.length() == 0) {
                     Toast.makeText(view.getContext(), "Enter a key to Encrypt", Toast.LENGTH_SHORT).show();
                     return;
@@ -128,10 +125,7 @@ public class EncryptionMain extends Fragment {
                 Vigenere v = new Vigenere();
                 Answer.setText(v.Vigenereencrypt(message, key));
                 break;
-            }
-
-
-            case "Play Fair": {
+            case "Play Fair":
                 try {
                     p = new PlayFair("");
                     Play_Fair_VALUE.setText(p.Encrypt(message, key));
@@ -140,22 +134,9 @@ public class EncryptionMain extends Fragment {
                     Toast.makeText(view.getContext(), "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
                 }
                 break;
-            }
-            case "SHA-256": {
-                MessageDigest digest = MessageDigest.getInstance("SHA-256");
-                byte[] hash = digest.digest(message.getBytes(StandardCharsets.UTF_8));
-                String encoded = Base64.encodeToString(hash, 0);
-                Answer.setText(encoded);
-
-            }
-
         }
     }
-
-
-    private static PublicKey pubKey;
-
-    public void Decrypt(View view) throws Exception {
+    public void decrypt(View view) throws Exception {
         if (Textfield_Text.length() == 0) {
             Toast.makeText(view.getContext(), "Enter a message to Decrypt", Toast.LENGTH_SHORT).show();
             return;
@@ -257,9 +238,7 @@ public class EncryptionMain extends Fragment {
                 Play_Fair_VALUE.setVisibility(View.GONE);
                 Switch.setText("Advanced Encryption Standard");
                 break;
-
         }
-
     }
 
 
