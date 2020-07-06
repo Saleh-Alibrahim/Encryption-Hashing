@@ -57,8 +57,8 @@
 
     <EditText
         android:id="@+id/salt"
-        android:layout_width="121dp"
-        android:layout_height="60dp"
+        android:layout_width="208dp"
+        android:layout_height="63dp"
         android:layout_marginBottom="348dp"
         android:background="@drawable/shape"
         android:gravity="center"
@@ -70,26 +70,7 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.224"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/round"
-        android:layout_width="121dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="348dp"
-        android:background="@drawable/shape"
-        android:gravity="center"
-        android:hint="Rounds"
-        android:inputType="number"
-        android:maxLength="10"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView

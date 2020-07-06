@@ -28,6 +28,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
 
 import Encryption.Algorithms.AES;
+import Encryption.Algorithms.DES;
 import Encryption.Algorithms.PlayFair;
 import Encryption.Algorithms.Vigenere;
 import Encryption.Algorithms.Caesarcipher;
@@ -62,8 +63,6 @@ public class EncryptionMain extends Fragment {
         Textfield_Key = view.findViewById(R.id.Key);
         Matrix_value = view.findViewById(R.id.Matrix);
         Play_Fair_VALUE = view.findViewById(R.id.Play_Fair_VALUE);
-        //Switch.setText("Advanced Encryption Standard");
-
 
 
         return view;
@@ -88,13 +87,18 @@ public class EncryptionMain extends Fragment {
                 Answer.setText(encData);
                 break;
             }
+            case "Triple Data Encryption Standard":
+                DES des = new DES();
+                String encData = des.encrypt(key.getBytes("UTF-16LE"), message.getBytes("UTF-16LE"));
+                Answer.setText(encData);
+                break;
             case "Caesar Cipher": {
                 if (key.isEmpty()) {
                     Toast.makeText(view.getContext(), "Enter a key to Encrypt", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (Integer.parseInt(key) > 26) {
-                    Toast.makeText(view.getContext(), "The Key must be 26 or under", Toast.LENGTH_SHORT).show();
+                if (key.length() > 26) {
+                    Toast.makeText(view.getContext(), "The Key must be less than 26 characters", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Caesarcipher c = new Caesarcipher();
@@ -169,13 +173,22 @@ public class EncryptionMain extends Fragment {
                     Toast.makeText(view.getContext(), "Your key is wrong", Toast.LENGTH_SHORT).show();
                 }
                 break;
+            case "Triple Data Encryption Standard":
+                DES des = new DES();
+                try {
+                    String decData = des.decrypt(key, Base64.decode(message.getBytes("UTF-16LE"), Base64.DEFAULT));
+                    Answer.setText(decData);
+                } catch (Exception e) {
+                    Toast.makeText(view.getContext(), "Your key is wrong", Toast.LENGTH_SHORT).show();
+                }
+                break;
             case "Caesar Cipher":
                 if (Textfield_Key.length() == 0) {
                     Toast.makeText(view.getContext(), "Enter a key", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (Integer.parseInt(key) >= 26) {
-                    Toast.makeText(view.getContext(), "The Key must be 26 or under", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "The Key must be less than 26 characters", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Caesarcipher c = new Caesarcipher();
@@ -221,6 +234,9 @@ public class EncryptionMain extends Fragment {
         String SwitchValue = Switch.getText().toString();
         switch (SwitchValue) {
             case "Advanced Encryption Standard":
+                Switch.setText("Triple Data Encryption Standard");
+                break;
+            case "Triple Data Encryption Standard":
                 Textfield_Key.setInputType(InputType.TYPE_CLASS_NUMBER);
                 Switch.setText("Caesar Cipher");
                 break;
