@@ -32,7 +32,7 @@ import Encryption.Algorithms.PlayFair;
 import Encryption.Algorithms.Vigenere;
 import Encryption.Algorithms.Caesarcipher;
 
-public class EncryptionManin extends Fragment {
+public class EncryptionMain extends Fragment {
     private String message;
     private String key;
     private Button Switch;
@@ -44,8 +44,7 @@ public class EncryptionManin extends Fragment {
     private EditText Textfield_Key;
     private TextView Matrix_value;
     private TextView Play_Fair_VALUE;
-    private ConstraintLayout ConstraintLayout;
-    private ConstraintSet ConstraintSet;
+
 
     private View view;
 
@@ -64,9 +63,7 @@ public class EncryptionManin extends Fragment {
         Matrix_value = view.findViewById(R.id.Matrix);
         Play_Fair_VALUE = view.findViewById(R.id.Play_Fair_VALUE);
         //Switch.setText("Advanced Encryption Standard");
-        ConstraintLayout = view.findViewById(R.id.ConstraintLayout);
-        ConstraintSet = new ConstraintSet();
-        ConstraintSet.clone(ConstraintLayout);
+
 
 
         return view;
@@ -147,32 +144,10 @@ public class EncryptionManin extends Fragment {
                 Answer.setText(encoded);
 
             }
-            //            case "RSA": {
-//                try {
-//
-//                    keyPair = buildKeyPair();
-//                    PrivateKey privateKey = keyPair.getPrivate();
-//                    pubKey = keyPair.getPublic();
-//                    byte[] signed = encryptRSA(privateKey, message);
-//                    String stringToStore = new String(Base64.encode(signed, 0));
-//                    answer.setText(stringToStore);
-//
-//                } catch (Exception e) {
-//                    Toast.makeText(this, "Your message is to long", Toast.LENGTH_SHORT).show();
-//
-//                }
-//                break;
-//            }
 
         }
     }
 
-    public static KeyPair buildKeyPair() throws NoSuchAlgorithmException {
-        final int keySize = 2048;
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-        keyPairGenerator.initialize(keySize);
-        return keyPairGenerator.genKeyPair();
-    }
 
     private static PublicKey pubKey;
 
@@ -181,7 +156,6 @@ public class EncryptionManin extends Fragment {
             Toast.makeText(view.getContext(), "Enter a message to Decrypt", Toast.LENGTH_SHORT).show();
             return;
         }
-
         message = String.valueOf(Textfield_Text.getText());
         key = String.valueOf(Textfield_Key.getText());
         String SwitchValue = Switch.getText().toString();
@@ -234,12 +208,9 @@ public class EncryptionManin extends Fragment {
                     Play_Fair_VALUE.setText(p.Decrypt(message, key));
                     Matrix_value.setText(p.getT1());
                 } catch (Exception e) {
-
                     Toast.makeText(view.getContext(), "Only Letters are allowed here", Toast.LENGTH_SHORT).show();
                 }
                 break;
-
-
         }
 
     }
@@ -268,34 +239,12 @@ public class EncryptionManin extends Fragment {
                 Answer.setVisibility(View.VISIBLE);
                 Matrix_value.setVisibility(View.GONE);
                 Play_Fair_VALUE.setVisibility(View.GONE);
-                ConstraintSet.setHorizontalBias(R.id.Encrypt_Buuton, (float) 0.50);
-                ConstraintSet.applyTo(ConstraintLayout);
-                Decrypt_Buuton.setVisibility(View.GONE);
-                Textfield_Key.setVisibility(View.GONE);
-                Encrypt_Buuton.setText("Hash");
-                Switch.setText("SHA-256");
-                break;
-            case "SHA-256":
-                Textfield_Key.setVisibility(View.VISIBLE);
-                Decrypt_Buuton.setVisibility(View.VISIBLE);
-                ConstraintSet.setHorizontalBias(R.id.Encrypt_Buuton, (float) 0.25);
-                ConstraintSet.applyTo(ConstraintLayout);
-                Encrypt_Buuton.setText("Encrypt");
                 Switch.setText("Advanced Encryption Standard");
                 break;
 
         }
 
     }
-
-    //        } else if (Switch.getText().equals("RSA")) {
-//            ekey.setVisibility(View.VISIBLE);
-//            answer.setVisibility(View.GONE);
-//            emat.setVisibility(View.VISIBLE);
-//            emessage2.setVisibility(View.VISIBLE);
-//            Switch.setText("Play Fair");
-//}
-
 
 
     public void reset(View view) {

@@ -10,12 +10,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.Algorithms.R;
 
-import Encryption.EncryptionManin;
+import Encryption.EncryptionMain;
+import Hash.HashMain;
 
 
 
 public class MainActivity extends AppCompatActivity {
-    EncryptionManin encryptionManin;
+    EncryptionMain encryptionMain;
+    HashMain hashMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,38 +30,71 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToEncryption(View view) {
-        encryptionManin = new EncryptionManin();
+        encryptionMain = new EncryptionMain();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out, android.R.anim.fade_in, android.R.anim.fade_out);
-        transaction.replace(R.id.container, encryptionManin);
+        transaction.replace(R.id.container, encryptionMain);
         transaction.addToBackStack(null);
         transaction.commit();
     }
 
-    public void buttonClick(View view) {
+    public void goToHash(View view) {
+        hashMain = new HashMain();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out, android.R.anim.fade_in, android.R.anim.fade_out);
+        transaction.replace(R.id.container, hashMain);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    public void encryptionButtonClick(View view) {
         try {
             switch (view.getId()) {
                 case R.id.Swtich:
-                    encryptionManin.switchAlgho(view);
+                    encryptionMain.switchAlgho(view);
                     break;
                 case R.id.Encrypt_Buuton:
-                    encryptionManin.Encrypt(view);
+                    encryptionMain.Encrypt(view);
                     break;
                 case R.id.Decrypt_Buuton:
-                    encryptionManin.Decrypt(view);
+                    encryptionMain.Decrypt(view);
                     break;
                 case R.id.copy_button:
-                    encryptionManin.copyToClipboard(view);
+                    encryptionMain.copyToClipboard(view);
                     break;
                 case R.id.reset_button:
-                    encryptionManin.reset(view);
+                    encryptionMain.reset(view);
                     break;
             }
         }
         catch (Exception e){
             e.printStackTrace();
     }
+
+    }
+
+    public void HashButtonClick(View view) {
+        try {
+            switch (view.getId()) {
+                case R.id.Swtich:
+                    hashMain.switchAlgho(view);
+                    break;
+                case R.id.hash_Buuton:
+                    hashMain.hash(view);
+                    break;
+                case R.id.copy_button:
+                    hashMain.copyToClipboard(view);
+                    break;
+                case R.id.reset_button:
+                    hashMain.reset(view);
+                    break;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 }

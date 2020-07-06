@@ -9,4 +9,5 @@
     <string name="key">key</string>
     <string name="your_output_gonna_be_here">Your output gonna be here</string>
     <string name="your_matrix_key_gonna_be_here">Your Matrix Key gonna be here</string>
+    <string name="hash">Hash</string>
 </resources>
